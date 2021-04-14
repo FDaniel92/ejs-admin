@@ -1,0 +1,53 @@
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+    
+      input[type="date"]~label {
+        background: white;
+      }
+    input {
+      border: 1px solid #d6d6d6;
+      box-sizing: border-box;
+      border-radius: 4px;
+      width: 100%;
+      padding: 20px 15px 15px 15px;
+      background: none;
+      position: relative;
+      background: #ffffff;
+      font-family: SourceSansPro;
+      &:focus {
+        outline: none;
+      }
+      &.error {
+        border: 1px solid #d9534f;
+      }
+    }
+    label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 15px;
+      transition: 0.25s ease-in-out;
+      font-size: 16px;
+      font-family: SourceSansPro;
+      &.active {
+        top: 25%;
+        z-index: 3;
+        color: #a0a0a0;
+        font-size: 12px;
+      }
+      &.error {
+        color: #d9534f;
+      }
+    }
+    span {
+      font-size: 12px;
+      color: #d9534f;
+      position: absolute;
+      bottom: -18px;
+      left: 10px;
+      &.active {
+        display: block;
+      }
+    }
+  }

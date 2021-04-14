@@ -1,0 +1,16 @@
+.actual-writer-component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 35px;
+    img {
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        border-radius: 50%;
+    }
+    p {
+        padding: 0;
+        margin: 0 0 0 30px;
+    }
+}

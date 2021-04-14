@@ -1,0 +1,15 @@
+select {
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 100%;
+    padding: 20px 15px 15px 15px;
+    background: none;
+    position: relative;
+    background: #ffffff;
+    font-size: 16px;
+    font-family: SourceSansPro;
+    &:focus {
+      outline: none;
+    }
+  }

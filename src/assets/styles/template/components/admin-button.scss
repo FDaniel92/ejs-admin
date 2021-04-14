@@ -1,0 +1,47 @@
+.admin-button {
+  padding: 18px 35px;
+  font-size: 16px;
+  border-radius: 4px;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-top: auto;
+  background: #1e1e1e;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  font-family: SourceSansPro;
+  &:hover {
+    background: #c03;
+  }
+}
+
+.fixed-btns {
+  position: fixed;
+  top: 130px;
+  right: 30px;
+  width: 300px;
+}
+
+.add-article-btn,
+.add-image-btn {
+  padding: 18px 35px;
+  font-size: 14px;
+  border-radius: 4px;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: auto 0 30px 0;
+  background: #aa8960;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  font-family: SourceSansPro;
+  box-sizing: border-box;
+  text-align: center;
+  &:hover {
+    background: #997a55;
+  }
+}
