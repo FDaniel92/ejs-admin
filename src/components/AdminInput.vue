@@ -48,24 +48,11 @@ export default {
         if (!this.validOnlyLetters(value) && value !== "") {
           this.classes.isError = true;
           this.classes.isActiveRequire = true;
-          this.requiredText = "Hibás formátum!";
+          this.requiredText = "Túl kevés karakter!";
         } else {
           this.requiredText = "";
           this.classes.isActive = true;
           this.classes.isError = false;
-          this.classes.isActiveRequire = false;
-        }
-      }
-
-      if (this.type === "email") {
-        if (!this.validEmail(value) && value != "") {
-          this.classes.isError = true;
-          this.classes.isActiveRequire = true;
-          this.requiredText = "Hibás formátum!";
-        } else {
-          this.requiredText = "";
-          this.classes.isError = false;
-          this.classes.isActive = true;
           this.classes.isActiveRequire = false;
         }
       }
@@ -75,15 +62,13 @@ export default {
     },
     removeLabelProp() {
       if (!this.value) {
-        this.classes.isActive = false;
+        this.classes.isError = true;
+        this.classes.isActiveRequire = true;
+        this.requiredText = "Kötelező mező!";
       }
     },
-    validEmail(email) {
-      var re = /^([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-      return re.test(email);
-    },
     validOnlyLetters(text) {
-      var regex = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+      var regex = /^.{6,}$/;
       return regex.test(text);
     },
   },

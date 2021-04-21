@@ -42,8 +42,9 @@ export default {
   methods: {
     updateValue(value) {
       this.$emit("input", value);
-      if (value != null) {
+      if (value !== "") {
         this.requiredText = "";
+        this.classes.isError = false;
         this.classes.isActive = true;
         this.classes.isActiveRequire = false;
       }
@@ -53,7 +54,9 @@ export default {
     },
     removeLabelProp() {
       if (!this.value) {
-        this.classes.isActive = false;
+        this.classes.isError = true;
+        this.classes.isActiveRequire = true;
+        this.requiredText = "Kötelező mező!";
       }
     },
   },

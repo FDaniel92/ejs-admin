@@ -10,7 +10,9 @@
         <div class="form-group">
           <select
             @input="clicked"
+            @blur="removeLabelPropForSelect"
             v-model="article.headerContent[0].writerName"
+            :class="{ error: classes.isError }"
           >
             <option value="" selected disabled hidden>
               Válassza ki a cikk íróját!
@@ -23,6 +25,7 @@
               {{ option.name }}
             </option>
           </select>
+          <span v-if="required">Kötelező mező!</span>
         </div>
 
         <div v-if="writerImage" class="actual-writer-component">
@@ -56,6 +59,7 @@
               v-model="blogArticle.body"
               inputLabel="Blog cikk szövege"
               v-if="blogArticle.type === 'text'"
+              ref="valami"
             ></admin-textarea>
 
             <admin-image-area
@@ -101,6 +105,10 @@ export default {
   },
   data() {
     return {
+      required: false,
+      classes: {
+         isError: false
+      },
       article: {
         headerContent: [
           { type: "text", writerName: "" },
@@ -155,7 +163,27 @@ export default {
       //     for (let key in this.article) this.article[key] = null;
       //     window.location.reload();
       //   });
-      console.log(this.article);
+      if (!this.article.headerContent[0].writerName) {
+        this.required = true
+        this.classes.isError = true;
+      }
+      if(!this.article.blogTitle) {
+        this.$refs.blogTitleInput.requiredText = "Kötelező mező!";
+        this.$refs.blogTitleInput.classes.isError = true;
+      }
+      // if(!this.article.blogContents[0].body) {
+      //   this.$refs.valami.requiredText = "Kötelező mező!";
+      // }
+      // console.log(this.article.blogContents[0].body);
+    },
+     removeLabelPropForSelect($event) {
+      if($event.target.value === "" || $event.target.value === null || $event.target.value === "undefined") {
+        this.required = true
+        this.classes.isError = true;
+      } else {
+        this.required = false
+        this.classes.isError = false;
+      }
     },
     clicked($event) {
       this.$emit("input", $event.target.value);
@@ -170,6 +198,12 @@ export default {
           this.article.headerContent[2].role = this.existWriters[i].role;
           this.article.headerContent[3].subRole = this.existWriters[i].subRole;
         }
+      }
+      if($event.target.value === "" || $event.target.value === null || $event.target.value === "undefined") {
+        this.required = true
+      } else {
+        this.required = false
+        this.classes.isError = false;
       }
     },
   },

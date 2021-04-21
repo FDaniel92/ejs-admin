@@ -1,6 +1,7 @@
 .image-input-component {
     align-items: center;
     margin-bottom: 20px;
+    
     .image-name {
       width: 100%;
       margin-right: 20px;
@@ -52,6 +53,17 @@
           }
           &.error {
             color: #d9534f;
+          }
+        }
+        span {
+          font-size: 12px;
+          font-family: SourceSansProBold;
+          color: #d9534f;
+          position: absolute;
+          bottom: -18px;
+          left: 10px;
+          &.active {
+            display: block;
           }
         }
       }
@@ -107,6 +119,17 @@
           }
           &.error {
             color: #d9534f;
+          }
+        }
+        span {
+          font-size: 12px;
+          font-family: SourceSansProBold;
+          color: #d9534f;
+          position: absolute;
+          bottom: -18px;
+          left: 10px;
+          &.active {
+            display: block;
           }
         }
       }

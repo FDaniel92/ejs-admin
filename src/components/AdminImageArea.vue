@@ -3,44 +3,50 @@
     <div class="image-name">
       <div class="image-form-group">
         <input
-          :name="id+'imagenameinput'"
-          :id="id+'imagenameinput'"
+          :name="id + 'imagenameinput'"
+          :id="id + 'imagenameinput'"
           @focus="updateTextareaLabelProp"
-          @blur="removeLabelProp"
+          @blur="removeLabelPropForImageName"
           v-model="value.imageName"
         />
         <label
           :class="{ active: classes.isActive }"
-          :for="id+'imagenameinput'"
+          :for="id + 'imagenameinput'"
           >{{ inputLabel }}</label
         >
+      <span :class="{ active: classes.isActiveRequireForImageName }">{{
+        requiredImageName
+      }}</span>
       </div>
     </div>
 
     <div class="image-alt-name">
       <div class="image-alt-form-group">
         <input
-          :name="id+'altinput'"
-          :id="id+'altinput'"
+          :name="id + 'altinput'"
+          :id="id + 'altinput'"
           @focus="updateImageAltLabelProp"
-          @blur="removeImageAltLabelProp"
+          @blur="removeLabelPropForIamgeAlt"
           v-model="value.imageAlt"
         />
         <label
           :class="{ active: classes.isActiveAlt }"
-          :for="id+'altinput'"
-          >{{inputAltLabel}}</label
+          :for="id + 'altinput'"
+          >{{ inputAltLabel }}</label
         >
+      <span :class="{ active: classes.isActiveRequireForImageAlt }">{{
+        requiredImageAlt
+      }}</span>
       </div>
     </div>
 
     <div class="is-carousel">
       <input
         type="checkbox"
-        :id="id+'checkboxid'"
+        :id="id + 'checkboxid'"
         v-model="value.isCarousel"
       />
-      <label :for="id+'checkboxid'">{{isCarouselText}}</label>
+      <label :for="id + 'checkboxid'">{{ isCarouselText }}</label>
     </div>
   </div>
 </template>
@@ -53,20 +59,23 @@ export default {
     name: String,
     inputLabel: String,
     inputAltLabel: String,
-    isCarouselText: String
+    isCarouselText: String,
   },
   data() {
     return {
+      requiredImageName: null,
+      requiredImageAlt: null,
       id: null,
       classes: {
         isActive: false,
-        isActiveRequire: false,
+        isActiveRequireForImageAlt: false,
+        isActiveRequireForImageName: false,
         isActiveAlt: false,
       },
     };
   },
   mounted() {
-    this.id = this._uid
+    this.id = this._uid;
   },
   methods: {
     updateTextareaLabelProp() {
@@ -75,9 +84,17 @@ export default {
     updateImageAltLabelProp() {
       this.classes.isActiveAlt = true;
     },
-    removeLabelProp() {
+    removeLabelPropForImageName() {
       if (!this.value.imageName) {
         this.classes.isActive = false;
+        this.isActiveRequireForImageName = true;
+        this.requiredImageName = "Kötelező megadni a file nevét!";
+      }
+    },
+    removeLabelPropForIamgeAlt() {
+      if (!this.value.imageName) {
+        this.classes.isActive = false;
+        this.requiredImageAlt = "Kötelező megadni a kép leírását!";
       }
     },
     removeImageAltLabelProp() {

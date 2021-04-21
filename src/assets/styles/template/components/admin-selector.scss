@@ -12,4 +12,13 @@ select {
     &:focus {
       outline: none;
     }
+    &.error {
+      border: 1px solid #d9534f;
+      &:first-child {
+        color: #d9534f;
+      }
+    }
+    option {
+      color: black;
+    }
   }
