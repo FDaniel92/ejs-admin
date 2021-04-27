@@ -10,7 +10,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-quill-editor": "^3.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -36,7 +37,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": "off" 
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [

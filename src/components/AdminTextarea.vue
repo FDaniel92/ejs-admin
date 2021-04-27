@@ -56,6 +56,7 @@ export default {
       if (!this.value) {
         this.classes.isError = true;
         this.classes.isActiveRequire = true;
+        this.classes.isActive = false;
         this.requiredText = "Kötelező mező!";
       }
     },

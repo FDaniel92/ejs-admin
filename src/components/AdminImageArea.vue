@@ -14,9 +14,9 @@
           :for="id + 'imagenameinput'"
           >{{ inputLabel }}</label
         >
-      <span :class="{ active: classes.isActiveRequireForImageName }">{{
-        requiredImageName
-      }}</span>
+        <span :class="{ active: classes.isActiveRequireForImageName }">{{
+          requiredImageName
+        }}</span>
       </div>
     </div>
 
@@ -34,9 +34,9 @@
           :for="id + 'altinput'"
           >{{ inputAltLabel }}</label
         >
-      <span :class="{ active: classes.isActiveRequireForImageAlt }">{{
-        requiredImageAlt
-      }}</span>
+        <span :class="{ active: classes.isActiveRequireForImageAlt }">{{
+          requiredImageAlt
+        }}</span>
       </div>
     </div>
 
@@ -89,17 +89,17 @@ export default {
         this.classes.isActive = false;
         this.isActiveRequireForImageName = true;
         this.requiredImageName = "Kötelező megadni a file nevét!";
+      } else {
+        this.requiredImageName = "";
       }
     },
     removeLabelPropForIamgeAlt() {
-      if (!this.value.imageName) {
-        this.classes.isActive = false;
-        this.requiredImageAlt = "Kötelező megadni a kép leírását!";
-      }
-    },
-    removeImageAltLabelProp() {
       if (!this.value.imageAlt) {
         this.classes.isActiveAlt = false;
+        this.isActiveRequireForImageName = true;
+        this.requiredImageAlt = "Kötelező megadni a kép leírását!";
+      } else {
+        this.requiredImageAlt = "";
       }
     },
   },
