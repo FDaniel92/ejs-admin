@@ -23,47 +23,26 @@ body {
 	display: flex;
 	flex-direction: row;
 }
-/*KISZERVEZNI KÜLÖN FILE-BA!!!!*/
-.admin-container {
-	padding: 0 30px;
-}
-.preview {
-	background: transparent;
-	padding: 20px;
-	margin-left: 30px;
-	width: 100%;
-	max-width: 600px;
-	height: 600px;
-	overflow-y: scroll;
-	h1 {
-		font-family: PlayFairDisplay;
-		font-size: 40px;
-		color: #aa8961;
-		margin: 20px 0 20px 0;
-		font-weight: 700;
-		line-height: 1.1;
-	}
-	h2 {
-		font-size: 26px;
-		font-weight: 700;
-		font-family: SourceSansPro;
-	}
-	p {
-		font-family: SourceSansPro;
-	}
-	.preview-maintitle {
-		font-family: PlayFairDisplay;
-		font-size: 40px;
-		color: #aa8961;
-		font-weight: 700;
-		line-height: 1.1;
-	}
-	.preview-short-content {
-		font-size: 26px;
-		line-height: 1.4;
-		font-family: SourceSansPro;
-	}
-}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

@@ -55,28 +55,9 @@
             id="blogShortTitleInput"
             v-model="article.blogShortTitle"
             inputLabel="Blog rövid leírása:"
+            :wordCounter="250"
           />
 
-          <!-- <div class="blog-content-container">
-          <div
-            v-for="(blogArticle, counter) in article.blogContents"
-            :key="counter"
-          >
-            <admin-textarea
-              v-model="blogArticle.body"
-              inputLabel="Blog cikk szövege"
-              v-if="blogArticle.type === 'text'"
-            ></admin-textarea>
-
-            <admin-image-area
-              v-model="article.blogContents[counter]"
-              inputLabel="Kép neve"
-              inputAltLabel="Kép alt címe"
-              isCarouselText="Előnézeti kép?"
-              v-if="blogArticle.type === 'image'"
-            />
-          </div>
-        </div> -->
           <quill-editor
             ref="myQuillEditor"
             v-model="article.blogContent"
@@ -86,45 +67,73 @@
             @ready="onEditorReady($event)"
           />
           <div class="admin-fixed-btns">
-            <!-- <div class="add-article-btn" @click="addNewArticleInput('text')">
-            Blog cikk hozzáadása
-          </div>
-          <p class="required-textarea">
-            {{ isRequiredText }}
-          </p>
-          <div class="add-image-btn" @click="addNewArticleInput('image')">
-            Kép hozzáadása
-          </div> -->
             <admin-button type="submit" label="Mentem"></admin-button>
           </div>
         </form>
       </div>
-      <div class="preview">
-        <div v-if="writerImage" class="actual-writer-component">
-          <img
-            :src="require('@/assets/images/' + writerImage + '.png')"
-            alt="A cikk írója"
-          />
-          <div class="column">
-            <p>
-              <strong>{{ article.headerContent[0].writerName }}</strong>
-              - {{ writerTitle }}
-            </p>
-            <p>{{ writersubRole }}</p>
+      <div class="column">
+        <div class="short-preview">
+          <div v-if="writerImage" class="actual-writer-component">
+            <img
+              :src="require('@/assets/images/' + writerImage + '.png')"
+              alt="A cikk írója"
+            />
+            <div class="column">
+              <p>
+                <strong>{{ article.headerContent[0].writerName }}</strong>
+                - {{ writerTitle }}
+              </p>
+              <p>{{ writersubRole }}</p>
+            </div>
+            <p>{{ article.date }}</p>
           </div>
-          <p>{{ article.date }}</p>
+          <div v-if="article.blogTitle" class="short-preview-maintitle">
+            {{ article.blogTitle }}
+          </div>
+          <br />
+          <br />
+          <div
+            v-if="article.blogShortTitle"
+            class="short-preview-short-content"
+          >
+            {{ article.blogShortTitle }}
+            <span v-if="article.blogShortTitle" class="goto-article"
+              >Bővebben</span
+            >
+          </div>
         </div>
-        <div v-if="article.blogTitle" class="preview-maintitle">{{ article.blogTitle }}</div>
-        <br />
-        <br />
-        <br />
-        <div v-if="article.blogShortTitle" class="preview-short-content"> {{ article.blogShortTitle }}</div>
-        <br />
-        <br />
-        <div
-          v-if="article.blogContent"
-          v-html="article.blogContent"
-        ></div>
+
+        <div class="preview-outer">
+          <div class="preview">
+            <div v-if="writerImage" class="actual-writer-component">
+              <img
+                :src="require('@/assets/images/' + writerImage + '.png')"
+                alt="A cikk írója"
+                class="writer-image"
+              />
+              <div class="column">
+                <p>
+                  <strong>{{ article.headerContent[0].writerName }}</strong>
+                  - {{ writerTitle }}
+                </p>
+                <p>{{ writersubRole }}</p>
+              </div>
+              <p>{{ article.date }}</p>
+            </div>
+            <div v-if="article.blogTitle" class="preview-maintitle">
+              {{ article.blogTitle }}
+            </div>
+            <br />
+            <br />
+            <br />
+            <div v-if="article.blogShortTitle" class="preview-short-content">
+              {{ article.blogShortTitle }}
+            </div>
+            <br />
+            <br />
+            <div v-if="article.blogContent" v-html="article.blogContent"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -134,8 +143,6 @@
 import AdminHeader from "./components/AdminHeader";
 import AdminButton from "./components/AdminButton";
 import AdminInput from "./components/AdminInput";
-// import AdminTextarea from "./components/AdminTextarea";
-// import AdminImageArea from "./components/AdminImageArea";
 import AdminPopup from "./components/AdminPopup";
 import axios from "axios";
 import "quill/dist/quill.core.css";
@@ -158,6 +165,7 @@ export default {
       editorOption: {
         // Some Quill options...
       },
+      wordCounter: 10,
       required: false,
       isRequiredText: null,
       activateThePopUp: false,
@@ -171,7 +179,7 @@ export default {
           { type: "text", role: "" },
           { type: "text", subRole: "" },
         ],
-        date: new Date().toISOString().split("T")[0],
+        date: this.customizedTheDate(),
         blogTitle: "",
         blogShortTitle: "",
         blogContent: "",
@@ -198,6 +206,22 @@ export default {
     onEditorChange({ quill, html, text }) {
       console.log("editor change!", quill, html, text);
       this.content = html;
+    },
+    appendLeadingZeroes(n) {
+      if (n <= 9) {
+        return "0" + n;
+      }
+      return n;
+    },
+    customizedTheDate() {
+      let currentDate = new Date();
+      let formatDate =
+        currentDate.getFullYear() +
+        "." +
+        this.appendLeadingZeroes(currentDate.getMonth() + 1) +
+        "." +
+        currentDate.getDate();
+      return formatDate;
     },
     addNewArticleInput(type) {
       if (type === "text") {

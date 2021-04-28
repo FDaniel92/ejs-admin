@@ -1,0 +1,104 @@
+.admin-container {
+    padding: 0 30px;
+}
+.short-preview {
+    width: 100%;
+    max-width: 600px;
+    min-width: 600px;
+    height: auto;
+    margin: 0 0 30px 30px;
+    padding: 20px;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    position: relative;
+    &:before {
+        content: "Blog cikk rövid előnézet";
+        position: absolute;
+        font-family: SourceSansPro;
+        top: -6px;
+        left: 5px;
+        background: white;
+        font-size: 12.5px;
+    }
+    .short-preview-maintitle {
+        font-family: SourceSansPro;
+        font-size: 26px;
+        color: #aa8961;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+    .short-preview-short-content {
+        font-family: SourceSansPro;
+        font-size: 18px;
+        line-height: 1.4;
+        .goto-article {
+            color: #aa8961;
+            text-decoration: underline;
+        }
+    }
+    p {
+        font-family: SourceSansPro;
+    }
+}
+.preview-outer {
+    position: relative;
+    background: transparent;
+    padding: 20px;
+    margin-left: 30px;
+    width: 100%;
+    max-width: 600px;
+    min-width: 600px;
+    height: 350px;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    &:before {
+        content: "Blog cikk előnézet";
+        position: absolute;
+        font-family: SourceSansPro;
+        top: -6px;
+        left: 5px;
+        background: white;
+        font-size: 12.5px;
+    }
+    .preview {
+        overflow-y: auto;
+        width: 100%;
+        max-width: 600px;
+        min-width: 600px;
+        height: 350px;
+        padding-right: 10px;
+        h1 {
+            font-family: PlayFairDisplay;
+            font-size: 40px;
+            color: #aa8961;
+            margin: 20px 0 20px 0;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 700;
+            font-family: SourceSansPro;
+        }
+        p {
+            font-family: SourceSansPro;
+        }
+        img:not(.writer-image) {
+            display: block;
+            width: 100%;
+            margin: 30px 0;
+        }
+        .preview-maintitle {
+            font-family: PlayFairDisplay;
+            font-size: 40px;
+            color: #aa8961;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .preview-short-content {
+            font-size: 26px;
+            line-height: 1.4;
+            font-family: SourceSansPro;
+        }
+    }
+}

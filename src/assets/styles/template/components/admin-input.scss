@@ -50,5 +50,11 @@
       &.active {
         display: block;
       }
+      &.letter-watcher {
+        color: grey;
+        font-family: SourceSansPro;
+        left: auto;
+        right: 10px;
+      }
     }
   }

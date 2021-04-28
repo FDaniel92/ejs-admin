@@ -9,6 +9,7 @@
       @focus="updateLabelProp"
       @blur="removeLabelProp"
       :class="{ error: classes.isError }"
+      :maxlength="wordCounter"
     />
     <label
       :class="{ active: classes.isActive, error: classes.isError }"
@@ -17,6 +18,7 @@
       >{{ inputLabel }}</label
     >
     <span :class="{ active: classes.isActiveRequire }">{{ requiredText }}</span>
+    <span class="letter-watcher" v-if="wordCounter">Megengedett karakterszám: {{wordCounter}} / {{value.length}} </span>
   </div>
 </template>
 
@@ -29,6 +31,7 @@ export default {
     name: String,
     id: String,
     inputLabel: String,
+    wordCounter: Number
   },
   data() {
     return {
@@ -48,7 +51,7 @@ export default {
         if (!this.validOnlyLetters(value) && value !== "") {
           this.classes.isError = true;
           this.classes.isActiveRequire = true;
-          this.requiredText = "Túl kevés karakter!";
+          this.requiredText = "Túl kevés karakter (minimum: 15), kérem írjon még!";
         } else {
           this.requiredText = "";
           this.classes.isActive = true;
@@ -68,7 +71,7 @@ export default {
       }
     },
     validOnlyLetters(text) {
-      var regex = /^.{6,}$/;
+      var regex = /^.{15,}$/;
       return regex.test(text);
     },
   },
