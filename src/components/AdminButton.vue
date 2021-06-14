@@ -4,7 +4,6 @@
 
 <script lang="js">
 export default {
-    name: 'admin-button',
     props: {
       label: String
     }

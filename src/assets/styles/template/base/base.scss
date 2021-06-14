@@ -1,4 +1,6 @@
+html,
 body {
+	height: 100%;
 	box-sizing: border-box;
 }
 .container {
@@ -7,6 +9,10 @@ body {
 	p {
 		font-family: SourceSansPro;
 	}
+}
+
+.width-full {
+	width: 100%;
 }
 
 .required {
@@ -27,22 +33,22 @@ body {
 /* width */
 ::-webkit-scrollbar {
 	width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-	background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-	background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-	background: #555; 
-  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -120,7 +126,6 @@ footer,
 header,
 hgroup,
 menu,
-nav,
 output,
 ruby,
 section,
@@ -146,7 +151,6 @@ footer,
 header,
 hgroup,
 menu,
-nav,
 section {
 	display: block;
 }

@@ -1,10 +1,20 @@
 .form-group {
     position: relative;
     margin-bottom: 30px;
+    width: 100%;
     
       input[type="date"]~label {
         background: white;
       }
+      @at-root select#{&} {
+        background-color: yellow
+    }
+
+    &--small {
+      width: 50%;
+      margin-right: 30px;
+    }
+
     input {
       border: 1px solid #d6d6d6;
       box-sizing: border-box;

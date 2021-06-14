@@ -33,7 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 .popup-wrapper {
-  background: rgba(204, 0, 51, 0.8);
+  background: rgba(245, 245, 245, 0.8);
+  backdrop-filter: blur(6px);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -42,6 +43,7 @@ export default {
   z-index: 1000000;
   .popup {
     background: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 650px;
     padding: 35px 25px;
     height: fit-content;
@@ -64,6 +66,9 @@ export default {
       width: 250px;
       padding: 15px 35px;
       margin-top: 0;
+      &:nth-child(2) {
+        margin-bottom: 30px;
+      }
     }
   }
 }

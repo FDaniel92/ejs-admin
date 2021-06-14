@@ -1,72 +1,69 @@
 .admin-container {
     padding: 0 30px;
-}
-.short-preview {
     width: 100%;
-    max-width: 600px;
-    min-width: 600px;
-    height: auto;
-    margin: 0 0 30px 30px;
-    padding: 20px;
-    border: 1px solid #d6d6d6;
-    border-radius: 4px;
-    position: relative;
-    &:before {
-        content: "Blog cikk rövid előnézet";
-        position: absolute;
-        font-family: SourceSansPro;
-        top: -6px;
-        left: 5px;
-        background: white;
-        font-size: 12.5px;
-    }
-    .short-preview-maintitle {
-        font-family: SourceSansPro;
-        font-size: 26px;
-        color: #aa8961;
-        font-weight: 700;
-        line-height: 1.1;
-    }
-    .short-preview-short-content {
-        font-family: SourceSansPro;
-        font-size: 18px;
-        line-height: 1.4;
-        .goto-article {
+    box-sizing: border-box;
+}
+.article-writer {
+    color: #aa8961;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.article-date {
+    color: #323232;
+    font-size: 14px;
+}
+.preview-wrapper {
+    padding: 10px 15px 0 0;
+    margin-left: 30px;
+    overflow-y: auto;
+    .short-preview {
+        height: auto;
+        margin: 0 0 30px 0;
+        padding: 20px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        position: relative;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        &:before {
+            content: "Blog cikk rövid előnézet";
+            position: absolute;
+            font-family: SourceSansPro;
+            top: -6px;
+            left: 5px;
+            background: white;
+            font-size: 12.5px;
+        }
+        .short-preview-maintitle {
+            font-family: SourceSansPro;
+            font-size: 26px;
             color: #aa8961;
-            text-decoration: underline;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        p {
+            font-family: SourceSansPro;
+            font-size: 14px;
         }
     }
-    p {
-        font-family: SourceSansPro;
-    }
-}
-.preview-outer {
-    position: relative;
-    background: transparent;
-    padding: 20px;
-    margin-left: 30px;
-    width: 100%;
-    max-width: 600px;
-    min-width: 600px;
-    height: 350px;
-    border: 1px solid #d6d6d6;
-    border-radius: 4px;
-    &:before {
-        content: "Blog cikk előnézet";
-        position: absolute;
-        font-family: SourceSansPro;
-        top: -6px;
-        left: 5px;
-        background: white;
-        font-size: 12.5px;
-    }
-    .preview {
-        overflow-y: auto;
-        width: 100%;
-        max-width: 600px;
-        min-width: 600px;
-        height: 350px;
-        padding-right: 10px;
+    .preview-outer {
+        position: relative;
+        background: transparent;
+        padding: 20px;
+        border: 1px solid #d6d6d6;
+        border-radius: 4px;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        &:before {
+            content: "Blog cikk előnézet";
+            position: absolute;
+            font-family: SourceSansPro;
+            top: -6px;
+            left: 5px;
+            background: white;
+            font-size: 12.5px;
+        }
         h1 {
             font-family: PlayFairDisplay;
             font-size: 40px;
@@ -82,6 +79,14 @@
         }
         p {
             font-family: SourceSansPro;
+        }
+        a {
+            color: #aa8961;
+            font-weight: bold;
+            &:hover {
+                background: #aa8961;
+                color: black;
+            }
         }
         img:not(.writer-image) {
             display: block;
@@ -99,6 +104,24 @@
             font-size: 26px;
             line-height: 1.4;
             font-family: SourceSansPro;
+        }
+
+        .preview-full-content {
+            p {
+                font-size: 20px;
+                color: #323232;
+                line-height: 1.4;
+            }
+        }
+    }
+    
+    .short-preview-short-content {
+        font-family: SourceSansPro;
+        font-size: 18px;
+        line-height: 1.4;
+        .goto-article {
+            color: #aa8961;
+            text-decoration: underline;
         }
     }
 }

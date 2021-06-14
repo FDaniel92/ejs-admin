@@ -4,9 +4,11 @@
       <div class="header-left-side">
         <img src="@/assets/images/eJogsegedLogo.png" alt="e-Jogsegéd logó" />
       </div>
-      <div class="header-right-side">
-        <h1>Adminisztrációs felülete</h1>
-      </div>
+      <nav class="header-navigation">
+        <router-link to="/">Főoldal</router-link>
+        <router-link to="/cikk-felvetele">Cikk felvétele</router-link>
+        <router-link to="/cikkek-megtekintese">Cikkek megtekintése</router-link>
+      </nav>
     </div>
   </header>
 </template>
@@ -16,6 +18,11 @@ export default {};
 </script>
 
 <style lang="scss">
+.edit-article-page {
+  .header {
+  margin-bottom: 0;
+  }
+}
 .header {
   background: white;
   position: relative;
@@ -44,20 +51,23 @@ export default {};
         margin-right: 150px;
       }
     }
-    .header-right-side {
-      background: #c03;
-      width: 100%;
-      padding-left: 50px;
-      position: relative;
+    .header-navigation {
       display: flex;
       flex-direction: row;
       align-items: center;
-      z-index: 5;
-      h1 {
-        font-family: SourceSansPro;
-        font-size: 35px;
-        text-align: center;
+      z-index: 100;
+      width: 100%;
+      padding-left: 50px;
+      background: #c03;
+      a {
+        font-size: 20px;
+        margin-right: 20px;
         color: white;
+        text-decoration: none;
+        font-family: SourceSanspro;
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
   }

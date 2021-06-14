@@ -10,6 +10,7 @@
       @blur="removeLabelProp"
       :class="{ error: classes.isError }"
       :maxlength="wordCounter"
+      :carouselImage="notRequired"
     />
     <label
       :class="{ active: classes.isActive, error: classes.isError }"
@@ -18,7 +19,9 @@
       >{{ inputLabel }}</label
     >
     <span :class="{ active: classes.isActiveRequire }">{{ requiredText }}</span>
-    <span class="letter-watcher" v-if="wordCounter">Megengedett karakterszám: {{wordCounter}} / {{value.length}} </span>
+    <span class="letter-watcher" v-if="wordCounter"
+      >Megengedett karakterszám: {{ wordCounter }} / {{ value.length }}
+    </span>
   </div>
 </template>
 
@@ -31,7 +34,8 @@ export default {
     name: String,
     id: String,
     inputLabel: String,
-    wordCounter: Number
+    wordCounter: Number,
+    notRequired: Boolean,
   },
   data() {
     return {
@@ -48,10 +52,15 @@ export default {
       this.$emit("input", value);
 
       if (this.type === "text") {
-        if (!this.validOnlyLetters(value) && value !== "") {
+        if (
+          !this.validOnlyLetters(value) &&
+          value !== "" &&
+          !this.notRequired
+        ) {
           this.classes.isError = true;
           this.classes.isActiveRequire = true;
-          this.requiredText = "Túl kevés karakter (minimum: 15), kérem írjon még!";
+          this.requiredText =
+            "Túl kevés karakter (minimum: 15), kérem írjon még!";
         } else {
           this.requiredText = "";
           this.classes.isActive = true;
@@ -69,11 +78,23 @@ export default {
         this.classes.isActive = false;
         this.requiredText = "Kötelező mező!";
       }
+      // if(this.value && this.notRequired) {
+      //   this.classes.isActive = true;
+      // } else {
+      //   this.classes.isActive = false;
+      // }
     },
     validOnlyLetters(text) {
       var regex = /^.{15,}$/;
       return regex.test(text);
     },
+  },
+  mounted() {
+    if (this.$route.name === "EditArticle") {
+      this.classes.isError = false;
+      this.classes.isActive = true;
+      this.requiredText = "";
+    }
   },
 };
 </script>
